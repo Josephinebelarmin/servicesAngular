@@ -1,25 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CounterService } from './counterService';
+import { USerServive } from './userService';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [USerServive,CounterService]
 })
-export class AppComponent {
+export class AppComponent{
   title = 'servicesAssignment';
 
-  activeUsers = ['Anne', 'Jerald','juan'];
-  inactiveUSers = ['Max', 'Roldan', 'jason'];
+  // constructor(private userService: USerServive){}
 
-  OnInactiveToActive(index: number){
-this.activeUsers.push(this.inactiveUSers[index]);
-this.inactiveUSers.splice(index,1);
-  }
-
-  OnactiveToInActive(index: number){
-this.inactiveUSers.push(this.activeUsers[index]);
-this.activeUsers.splice(index, 1);
-  }
-
-
+  // ngOnInit(): void {
+  //   this.userService.activeUsers;
+  //   this.userService.inactiveUSers;
+  // }
 }

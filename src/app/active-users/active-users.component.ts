@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { USerServive } from '../userService';
 
 @Component({
   selector: 'app-active-users',
@@ -7,15 +8,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ActiveUsersComponent implements OnInit {
 
-  @Input() users:string[];
-  @Output() userEmitter = new EventEmitter<number>();
+ users:string[];
+ constructor(private userService: USerServive){}
+
+ ngOnInit() {
+  this.users = this.userService.activeUsers;
+}
 
   onSetToInactive(index: number){
-    this.userEmitter.emit(index);
+    this.userService.setToInactive(index);
   }
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+
+  
 
 }
